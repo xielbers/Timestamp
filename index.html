@@ -15,13 +15,13 @@
             <button type="button" onclick="CurrentDate()">Ahora</button>
             <br><br>
             <label for="time">Hora:</label>
-            <input type="time" id="time" name="time" required>
+            <input type="time" id="time" name="time">
             <button type="button" onclick="CurrentTime()">Ahora</button>
             <br><br>
             <button type="button" onclick="Timestamp()">Convertir a Timestamp</button>
-        </form>
-        <p id="result"></p>
-        <span id="time"></span>
+        </form> <br>
+        <span id="result"></span><span id="timestamp"></span> <br> <br>
+        <button id="copyButton" type="button" onclick="Copy()" style="display: none;">Copiar Resultado</button>
     </div>
     <script src="index.js"></script>
 </body>

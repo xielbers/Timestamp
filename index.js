@@ -16,15 +16,38 @@ function CurrentTime() {
 function Timestamp() {
     const dateInput = document.getElementById('date').value;
     const timeInput = document.getElementById('time').value;
+    const copyButton = document.getElementById('copyButton');
 
-    if (dateInput && timeInput) {
+    if (dateInput && !timeInput) {
+        const dateTimeString = dateInput + 'T00:00:00';
+        const timestamp = new Date(dateTimeString).getTime() / 1000;
+        document.getElementById('result').innerText = 'Timestamp: ';
+        document.getElementById('timestamp').innerText = `${timestamp}`;
+        copyButton.style.display = 'inline';
+    } else if (dateInput && timeInput) {
         const dateTimeString = dateInput + 'T' + timeInput + ':00';
         const timestamp = new Date(dateTimeString).getTime() / 1000;
-        
-        document.getElementById('result').innerText = 'Timestamp: ' + timestamp;
-        document.getElementById('time').innerText = convertTimestamp(timestamp);
+        document.getElementById('result').innerText = 'Timestamp: ';
+        document.getElementById('timestamp').innerText = `${timestamp}`;
+        copyButton.style.display = 'inline';
+    } else if (!dateInput && timeInput) {
+        document.getElementById('result').innerText = 'Error: Por favor, selecciona una fecha válida.';
+        copyButton.style.display = 'none';
     } else {
-        document.getElementById('timestampResult').innerText = 'Por favor, selecciona una fecha y hora válidas.';
-        document.getElementById('time').innerText = '';
+        document.getElementById('result').innerText = 'Error: Por favor, selecciona una fecha y/o hora válidas.';
+        copyButton.style.display = 'none';
+    }
+}
+
+function Copy() {
+    const resultText = document.getElementById('timestamp').innerText;
+    if (resultText) {
+        navigator.clipboard.writeText(resultText)
+            .then(() => {
+                alert('Resultado copiado al portapapeles');
+            })
+            .catch(err => {
+                console.error('Error al copiar el texto: ', err);
+            });
     }
 }
