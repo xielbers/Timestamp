@@ -22,13 +22,13 @@ function Timestamp() {
         const dateTimeString = dateInput + 'T00:00:00';
         const timestamp = new Date(dateTimeString).getTime() / 1000;
         document.getElementById('result').innerText = 'Timestamp: ';
-        document.getElementById('timestamp').innerText = `${timestamp}`;
+        document.getElementById('timestamp').innerText = timestamp;
         copyButton.style.display = 'inline';
     } else if (dateInput && timeInput) {
         const dateTimeString = dateInput + 'T' + timeInput + ':00';
         const timestamp = new Date(dateTimeString).getTime() / 1000;
         document.getElementById('result').innerText = 'Timestamp: ';
-        document.getElementById('timestamp').innerText = `${timestamp}`;
+        document.getElementById('timestamp').innerText = timestamp;
         copyButton.style.display = 'inline';
     } else if (!dateInput && timeInput) {
         document.getElementById('result').innerText = 'Error: Por favor, selecciona una fecha válida.';
